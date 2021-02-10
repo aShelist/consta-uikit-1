@@ -56,6 +56,8 @@ const getKnobs = (replacedProps?: Partial<Props<TableRow>>): Props<TableRow> => 
   return {
     columns: object('columns', props.columns),
     rows: object('rows', props.rows),
+    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+    // @ts-ignore
     filters: getFiltersKnob(props.filters),
     size: getSizeKnob(),
     borderBetweenColumns: boolean('borderBetweenColumns', props.borderBetweenColumns),

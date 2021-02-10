@@ -43,7 +43,9 @@ export const TableFilterTooltip: React.FC<Props> = ({
 
   const filteredOptions = React.useCallback(
     (options) => {
-      return options.filter((option) => option.label.includes(search));
+      return options.filter((option: { value: Values[number]; label: string }) =>
+        option.label.includes(search),
+      );
     },
     [search],
   );
@@ -90,7 +92,7 @@ export const TableFilterTooltip: React.FC<Props> = ({
                 );
               }}
             >
-              {filteredOptions(options).map((option) => (
+              {filteredOptions(options).map((option: { value: Values[number]; label: string }) => (
                 <option
                   key={option.value}
                   className={cnTableFilterTooltip('Option')}

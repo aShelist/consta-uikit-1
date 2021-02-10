@@ -35,6 +35,18 @@ export const TableFilterTooltip: React.FC<Props> = ({
   onToggle,
 }) => {
   const buttonRef = React.useRef<HTMLButtonElement>(null);
+  const [search, setSearch] = React.useState('');
+
+  React.useEffect(() => {
+    setSearch('');
+  }, [isOpened]);
+
+  const filteredOptions = React.useCallback(
+    (options) => {
+      return options.filter((option) => option.label.includes(search));
+    },
+    [search],
+  );
 
   return (
     <>
@@ -61,6 +73,12 @@ export const TableFilterTooltip: React.FC<Props> = ({
             <Text as="div" size="xs" view="primary" className={cnTableFilterTooltip('Title')}>
               Фильтровать по условию
             </Text>
+            <input
+              placeholder="Поиск по фильтрам"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              className={cnTableFilterTooltip('Input')}
+            />
             <select
               className={cnTableFilterTooltip('Select')}
               value={[...values]}
@@ -72,7 +90,7 @@ export const TableFilterTooltip: React.FC<Props> = ({
                 );
               }}
             >
-              {options.map((option) => (
+              {filteredOptions(options).map((option) => (
                 <option
                   key={option.value}
                   className={cnTableFilterTooltip('Option')}

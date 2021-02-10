@@ -8,7 +8,7 @@ export type Filters<T extends TableRow> = Array<{
   id: string;
   name: string;
   field: RowField<T>;
-  filterer: (value: any) => boolean;
+  filterer: (value: any, row: T) => boolean;
 }>;
 
 export type SortByProps<T extends TableRow> = {
@@ -125,7 +125,7 @@ export const filterTableData = <T extends TableRow>({
           const filter = filters.find(({ id }) => id === filterId);
           const cellContent = row[columnName];
 
-          if (filter && filter.filterer(cellContent)) {
+          if (filter && filter.filterer(cellContent, row)) {
             cellIsValid = true;
             break;
           }

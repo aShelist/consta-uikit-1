@@ -31,7 +31,7 @@
 
   &-Select {
     width: 100%;
-    height: 100px;
+    height: 166px;
     color: var(--color-typo-primary);
     background: var(--color-control-bg-default);
     border-color: var(--color-bg-border);
@@ -41,5 +41,12 @@
   &-Option {
     padding: var(--space-xs);
     font-size: var(--size-text-s);
+  }
+
+  &-Input {
+    box-sizing: border-box;
+    width: 100%;
+    margin-bottom: var(--space-s);
+    padding: var(--space-2xs);
   }
 }

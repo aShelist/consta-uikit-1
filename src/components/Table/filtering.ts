@@ -8,7 +8,7 @@ export type Filters<T extends TableRow> = Array<{
   id: string;
   name: string;
   field: RowField<T>;
-  filterer: (value: any, row: T) => boolean;
+  filterer: (value: any, row?: T) => boolean;
 }>;
 
 export type SortByProps<T extends TableRow> = {

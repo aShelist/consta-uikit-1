@@ -44,7 +44,7 @@ export const TableFilterTooltip: React.FC<Props> = ({
   const filteredOptions = React.useCallback(
     (options) => {
       return options.filter((option: { value: Values[number]; label: string }) =>
-        option.label.includes(search),
+        option.label.toLowerCase().includes(search.toLowerCase()),
       );
     },
     [search],
